@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import UserActionTypes from "../../redux/user/action-types";
+import { loginUser, logoutUser } from "../../redux/user/actions";
 
 // Components
 import Cart from "../cart/index";
@@ -20,21 +20,17 @@ function Header() {
   };
 
   const handleLoginClick = () => {
-    dispatch({
-      type: UserActionTypes.LOGIN,
-      payload: {
+    dispatch(
+      loginUser({
         id: 10,
         name: 'Marcos Menezes',
         email: 'marcosjosemenezes77@gmail.com'
-      }
-    })
+      })
+    )
   }
 
   const handleLogoutClick = () => {
-    dispatch({
-      type: UserActionTypes.LOGIN,
-      payload: null
-    });
+    dispatch(logoutUser());
   }
 
   return (
